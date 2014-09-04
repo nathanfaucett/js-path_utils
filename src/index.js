@@ -20,13 +20,13 @@ pathUtils.trim = function(parts) {
         if (parts[start] !== "") break;
     }
 
-    end = length - 1;
-    for (; end >= 0; end--) {
+    end = length;
+    while (end--) {
         if (parts[end] !== "") break;
     }
 
     if (start > end) return [];
-    return parts.slice(start, end - start + 1);
+    return parts.slice(start, end + 1);
 };
 
 pathUtils.normalizeArray = function(parts, allowAboveRoot) {
