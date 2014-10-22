@@ -12,20 +12,21 @@ pathUtils.removeEmpties = function(parts) {
 };
 
 pathUtils.trim = function(parts) {
-    var length = parts.length,
-        start = 0,
+    var length = parts.length - 1,
+        start = -1,
         end;
 
-    for (; start < length; start++) {
+    while (start++ < length) {
         if (parts[start] !== "") break;
     }
 
-    end = length;
+    end = length + 1;
     while (end--) {
         if (parts[end] !== "") break;
     }
 
     if (start > end) return [];
+
     return parts.slice(start, end + 1);
 };
 
