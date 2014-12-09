@@ -12,15 +12,15 @@ pathUtils.removeEmpties = function(parts) {
 };
 
 pathUtils.trim = function(parts) {
-    var length = parts.length - 1,
+    var length = parts.length,
         start = -1,
-        end;
+        end = length - 1;
 
-    while (start++ < length) {
+    while (start++ < end) {
         if (parts[start] !== "") break;
     }
 
-    end = length + 1;
+    end = length;
     while (end--) {
         if (parts[end] !== "") break;
     }
@@ -43,7 +43,7 @@ pathUtils.normalizeArray = function(parts, allowAboveRoot) {
         } else if (last === "..") {
             parts.splice(i, 1);
             up++;
-        } else if (up) {
+        } else if (up !== 0) {
             parts.splice(i, 1);
             up--;
         }
