@@ -5,7 +5,9 @@ pathUtils.removeEmpties = function(parts) {
     var i = parts.length;
 
     while (i--) {
-        if (!parts[i]) parts.splice(i, 1);
+        if (!parts[i]) {
+            parts.splice(i, 1);
+        }
     }
 
     return parts;
@@ -17,15 +19,21 @@ pathUtils.trim = function(parts) {
         end = length - 1;
 
     while (start++ < end) {
-        if (parts[start] !== "") break;
+        if (parts[start] !== "") {
+            break;
+        }
     }
 
     end = length;
     while (end--) {
-        if (parts[end] !== "") break;
+        if (parts[end] !== "") {
+            break;
+        }
     }
 
-    if (start > end) return [];
+    if (start > end) {
+        return [];
+    }
 
     return parts.slice(start, end + 1);
 };
@@ -50,7 +58,9 @@ pathUtils.normalizeArray = function(parts, allowAboveRoot) {
     }
 
     if (allowAboveRoot) {
-        while (up--) parts.unshift("..");
+        while (up--) {
+            parts.unshift("..");
+        }
     }
 
     return parts;
